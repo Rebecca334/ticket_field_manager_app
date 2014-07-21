@@ -50,6 +50,10 @@
       "readonly_fields_whitelist_organization_ids":{
         "label": "Readonly Fields whitelist organizations",
         "helpText": "List of organization ids separated by commas. Example: 231231321,34345456"
+      },
+      "editable_once_fields": {
+        "label":"Editable once fields",
+        "helpText": "List of ticket fields that should be only editable on creation. Example: status,custom_field_1234567"
       }
     }
   },

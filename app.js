@@ -48,6 +48,7 @@
     handleFields: function() {
       this.handleHiddenFields();
       this.handleReadOnlyFields();
+      this.handleEditableOnceFields();
     },
 
     validateRequiredFields: function() {
@@ -64,6 +65,19 @@
 
     handleReadOnlyFields: function() {
       this.readOnlyFields().forEach(function(field) {
+        this.applyActionOnField(field, 'disable');
+      }, this);
+    },
+
+    handleEditableOnceFields: function() {
+      var ticket = this.ticket();
+
+      if(ticket && !ticket.id()) {
+        //if new ticket, keep the fields editable
+        return;
+      }
+      
+      this.editableOnceFields().forEach(function(field) {
         this.applyActionOnField(field, 'disable');
       }, this);
     },
@@ -99,6 +113,10 @@
 
     readOnlyFields: _.memoize(function() {
       return this.fields('readonly_fields');
+    }),
+
+    editableOnceFields: _.memoize(function() {
+      return this.fields('editable_once_fields');
     }),
 
     fields: function(type) {
