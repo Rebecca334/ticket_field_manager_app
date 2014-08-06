@@ -1,6 +1,7 @@
 (function() {
   return {
     fieldsOnError: [],
+    fieldValuesOnLoad: [],
     requests: {
       fetchUser: function() {
         return {
@@ -21,6 +22,7 @@
 
     onAppActivated: function(app) {
       this.ajax('fetchUser');
+      this.fieldValuesOnLoad = [];
     },
 
     onFetchUserDone: function(data) {
@@ -78,6 +80,21 @@
       }
       
       this.editableOnceFields().forEach(function(field) {
+
+        //this function gets called  on page load, andd on each field change
+        //so we needed to store the initial value of the fields in this.fieldValuesOnLoad
+        if(!this.fieldValuesOnLoad.hasOwnProperty(field)) {
+          this.fieldValuesOnLoad[field] = this.containerContext().ticket[field];
+        }
+
+        var value = this.fieldValuesOnLoad[field];
+        
+        if(_.isEmpty(value)) {
+          //do not disable an empty field even if this is not the 
+          //first time to save that ticket
+          return;
+        }
+
         this.applyActionOnField(field, 'disable');
       }, this);
     },
