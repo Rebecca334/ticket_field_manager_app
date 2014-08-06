@@ -1,0 +1,29 @@
+{
+  "name": "ticket_field_manager_app",
+  "version": "0.0.1",
+  "description": "Enhanced version of a Zendesk app that adds new rules to ticket fields",
+  "main": "app.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-cli": "~0.1.13",
+    "grunt-zip": "~0.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Edfa3ly/ticket_field_manager_app.git"
+  },
+  "keywords": [
+    "zendesk",
+    "edfa3ly",
+    "ticket",
+    "fields",
+    "app"
+  ],
+  "author": "Ahmed Shreef",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Edfa3ly/ticket_field_manager_app/issues"
+  }
+}
